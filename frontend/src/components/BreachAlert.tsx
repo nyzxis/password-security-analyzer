@@ -20,9 +20,9 @@ export default function BreachAlert({
   if (!hasInput) {
     return (
       <div
-        className={`rounded-2xl p-5 text-xs font-mono flex items-center gap-3 transition-colors ${
+        className={`rounded-2xl p-5 text-xs font-mono flex items-center gap-3 transition-colors duration-150 ${
           isMinimal
-            ? 'bg-white border border-[#EAEAEA] text-[#787774]'
+            ? 'bg-[#F4F1EA] border border-[#D8D2C5] text-[#767066]'
             : 'bg-[#0a0d16]/70 border border-white/10 text-white/40'
         }`}
       >
@@ -37,7 +37,7 @@ export default function BreachAlert({
       <div
         className={`rounded-2xl p-5 text-xs font-mono flex items-center gap-3 animate-pulse ${
           isMinimal
-            ? 'bg-[#E1F3FE] border border-[#BEE3F8] text-[#1F6C9F]'
+            ? 'bg-[#DFE7EE] border border-[#C5D5E2] text-[#1E4D6E]'
             : 'bg-cyan-500/10 border border-cyan-500/20 text-cyan-300'
         }`}
       >
@@ -50,9 +50,9 @@ export default function BreachAlert({
   if (breachResult?.isPwned) {
     return (
       <div
-        className={`rounded-2xl p-5.5 transition-all ${
+        className={`rounded-2xl p-5.5 transition-colors duration-150 ${
           isMinimal
-            ? 'bg-[#FDEBEC] border border-[#F8D7DA] text-[#9F2F2D] shadow-sm'
+            ? 'bg-[#F2DFDE] border border-[#E5C7C5] text-[#822B29] shadow-sm'
             : 'bg-rose-500/15 border border-rose-500/35 text-rose-300 cyber-glow-rose'
         }`}
       >
@@ -60,7 +60,7 @@ export default function BreachAlert({
           <div className="flex items-start gap-3.5">
             <div
               className={`p-2.5 rounded-xl shrink-0 mt-0.5 ${
-                isMinimal ? 'bg-white text-[#9F2F2D]' : 'bg-black/40 text-rose-400 border border-rose-500/40'
+                isMinimal ? 'bg-[#EAE5DB] text-[#822B29]' : 'bg-black/40 text-rose-400 border border-rose-500/40'
               }`}
             >
               <ShieldAlert className="w-5 h-5" />
@@ -74,7 +74,7 @@ export default function BreachAlert({
               </div>
               <p
                 className={`text-sm font-mono mt-1 ${
-                  isMinimal ? 'text-[#9F2F2D]' : 'text-rose-200'
+                  isMinimal ? 'text-[#822B29]' : 'text-rose-200'
                 }`}
               >
                 This exact passcode was uncovered in{' '}
@@ -93,7 +93,7 @@ export default function BreachAlert({
             <span
               className={`text-xs font-mono font-bold px-3 py-1.5 rounded-lg border ${
                 isMinimal
-                  ? 'bg-white border-[#F8D7DA] text-[#9F2F2D]'
+                  ? 'bg-[#EAE5DB] border-[#E5C7C5] text-[#822B29]'
                   : 'bg-black/60 border-rose-500/40 text-rose-400'
               }`}
             >
@@ -107,9 +107,9 @@ export default function BreachAlert({
 
   return (
     <div
-      className={`rounded-2xl p-5 transition-all ${
+      className={`rounded-2xl p-5 transition-colors duration-150 ${
         isMinimal
-          ? 'bg-[#EDF3EC] border border-[#D4EDDA] text-[#346538] shadow-sm'
+          ? 'bg-[#DEE7DC] border border-[#C7D7C4] text-[#2A522E] shadow-sm'
           : 'bg-emerald-500/10 border border-emerald-500/25 text-emerald-300'
       }`}
     >
@@ -117,7 +117,7 @@ export default function BreachAlert({
         <div className="flex items-center gap-3">
           <div
             className={`p-2 rounded-xl shrink-0 ${
-              isMinimal ? 'bg-white text-[#346538]' : 'bg-black/40 text-emerald-400 border border-emerald-500/30'
+              isMinimal ? 'bg-[#EAE5DB] text-[#2A522E]' : 'bg-black/40 text-emerald-400 border border-emerald-500/30'
             }`}
           >
             <ShieldCheck className="w-5 h-5" />
@@ -138,7 +138,7 @@ export default function BreachAlert({
         <span
           className={`hidden sm:inline-block text-xs font-mono font-bold px-3 py-1.5 rounded-lg border ${
             isMinimal
-              ? 'bg-white border-[#D4EDDA] text-[#346538]'
+              ? 'bg-[#EAE5DB] border-[#C7D7C4] text-[#2A522E]'
               : 'bg-black/50 border-emerald-500/30 text-emerald-400'
           }`}
         >

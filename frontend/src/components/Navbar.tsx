@@ -17,20 +17,20 @@ export default function Navbar({
   const isMinimal = theme === 'minimalist';
 
   return (
-    <header className="sticky top-4 sm:top-6 z-50 px-4 sm:px-6 w-full max-w-6xl mx-auto transition-all duration-500">
+    <header className="sticky top-4 sm:top-6 z-50 px-4 sm:px-6 w-full max-w-6xl mx-auto transition-colors duration-150">
       <nav
-        className={`w-full px-4 sm:px-6 py-3 rounded-full flex items-center justify-between gap-4 transition-all duration-500 ${
+        className={`w-full px-4 sm:px-6 py-3 rounded-full flex items-center justify-between gap-4 transition-colors duration-150 ${
           isMinimal
-            ? 'bg-[#FBFBFA]/90 border border-[#EAEAEA] backdrop-blur-xl shadow-[0_2px_12px_rgba(0,0,0,0.04)]'
+            ? 'bg-[#F4F1EA]/95 border border-[#D8D2C5] shadow-[0_2px_12px_rgba(44,38,27,0.06)]'
             : 'glass-panel shadow-[0_8px_32px_rgba(0,0,0,0.6)]'
         }`}
       >
         {/* Brand Lockup */}
         <div className="flex items-center gap-3">
           <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-150 ${
               isMinimal
-                ? 'bg-[#111111] text-white'
+                ? 'bg-[#2C2924] text-[#F4F1EA]'
                 : 'bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 shadow-[0_0_12px_rgba(16,185,129,0.3)]'
             }`}
           >
@@ -40,7 +40,7 @@ export default function Navbar({
           <div className="flex items-center gap-2">
             <span
               className={`font-bold tracking-tight text-sm ${
-                isMinimal ? 'font-sans-clean text-[#111111]' : 'font-mono text-white'
+                isMinimal ? 'font-sans-clean text-[#2C2924]' : 'font-mono text-white'
               }`}
             >
               KEYVAULT
@@ -48,7 +48,7 @@ export default function Navbar({
             <span
               className={`text-[9px] uppercase font-mono px-2 py-0.5 rounded-full ${
                 isMinimal
-                  ? 'bg-[#EDF3EC] text-[#346538] border border-[#D4EDDA]'
+                  ? 'bg-[#DEE7DC] text-[#2A522E] border border-[#C7D7C4]'
                   : 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
               }`}
             >
@@ -61,9 +61,9 @@ export default function Navbar({
         <div className="flex items-center gap-2 sm:gap-3">
           {/* Status Capsule */}
           <div
-            className={`hidden md:flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono transition-colors ${
+            className={`hidden md:flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono transition-colors duration-150 ${
               isMinimal
-                ? 'bg-[#F7F6F3] text-[#787774] border border-[#EAEAEA]'
+                ? 'bg-[#EAE5DB] text-[#767066] border border-[#D8D2C5]'
                 : 'bg-white/5 border border-white/10 text-white/70'
             }`}
           >
@@ -83,15 +83,15 @@ export default function Navbar({
           <button
             onClick={onToggleTheme}
             aria-label="Toggle Minimalist Theme"
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono transition-all active:scale-95 ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono transition-colors duration-150 active:scale-95 ${
               isMinimal
-                ? 'bg-white border border-[#EAEAEA] text-[#111111] hover:bg-[#F2F1ED] shadow-sm'
+                ? 'bg-[#EAE5DB] border border-[#D8D2C5] text-[#2C2924] hover:bg-[#DFDACF]'
                 : 'bg-white/5 border border-white/15 text-white/80 hover:text-white hover:bg-white/10'
             }`}
           >
             {isMinimal ? (
               <>
-                <Moon className="w-3.5 h-3.5 text-[#111111]" />
+                <Moon className="w-3.5 h-3.5 text-[#2C2924]" />
                 <span className="hidden sm:inline">Cyber</span>
               </>
             ) : (
@@ -107,9 +107,9 @@ export default function Navbar({
             href="https://github.com/nyzxis/password-security-analyzer"
             target="_blank"
             rel="noopener noreferrer"
-            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono transition-all active:scale-95 ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-mono transition-colors duration-150 active:scale-95 ${
               isMinimal
-                ? 'bg-[#111111] text-white hover:bg-[#2F3437]'
+                ? 'bg-[#2C2924] text-[#F4F1EA] hover:bg-[#3D3A34]'
                 : 'bg-white/10 border border-white/15 text-white hover:bg-white/20 hover:border-emerald-500/40'
             }`}
           >

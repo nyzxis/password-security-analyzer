@@ -25,7 +25,7 @@ export default function CrackTimeCards({
       icon: Globe,
       cyberColor: 'text-cyan-400',
       cyberGlow: 'hover:border-cyan-500/30',
-      minimalBadge: 'bg-[#E1F3FE] text-[#1F6C9F] border-[#BEE3F8]',
+      minimalBadge: 'bg-[#DFE7EE] text-[#1E4D6E] border-[#C5D5E2]',
     },
     {
       title: 'ONLINE UNTHROTTLED',
@@ -36,7 +36,7 @@ export default function CrackTimeCards({
       icon: Server,
       cyberColor: 'text-indigo-400',
       cyberGlow: 'hover:border-indigo-500/30',
-      minimalBadge: 'bg-[#EBF8FF] text-[#2B6CB0] border-[#BEE3F8]',
+      minimalBadge: 'bg-[#E3E8F2] text-[#28487A] border-[#CAD5E5]',
     },
     {
       title: 'OFFLINE SLOW HASH',
@@ -47,7 +47,7 @@ export default function CrackTimeCards({
       icon: Shield,
       cyberColor: 'text-amber-400',
       cyberGlow: 'hover:border-amber-500/30',
-      minimalBadge: 'bg-[#FBF3DB] text-[#956400] border-[#F5E79E]',
+      minimalBadge: 'bg-[#EFE8D6] text-[#78540B] border-[#DFD4BA]',
     },
     {
       title: 'OFFLINE GPU CLUSTER',
@@ -58,7 +58,7 @@ export default function CrackTimeCards({
       icon: Cpu,
       cyberColor: 'text-rose-400',
       cyberGlow: 'hover:border-rose-500/30',
-      minimalBadge: 'bg-[#FDEBEC] text-[#9F2F2D] border-[#F8D7DA]',
+      minimalBadge: 'bg-[#F2DFDE] text-[#862927] border-[#E5C7C5]',
     },
   ];
 
@@ -67,7 +67,7 @@ export default function CrackTimeCards({
       <div className="flex items-center justify-between">
         <div
           className={`flex items-center gap-2 text-xs font-mono uppercase tracking-wider ${
-            isMinimal ? 'text-[#787774]' : 'text-cyan-400'
+            isMinimal ? 'text-[#767066]' : 'text-cyan-400'
           }`}
         >
           <Clock className="w-3.5 h-3.5" />
@@ -76,7 +76,7 @@ export default function CrackTimeCards({
 
         <span
           className={`text-[11px] font-mono px-2 py-0.5 rounded ${
-            isMinimal ? 'bg-[#F7F6F3] text-[#787774] border border-[#EAEAEA]' : 'bg-white/5 text-white/40 border border-white/10'
+            isMinimal ? 'bg-[#EAE5DB] text-[#767066] border border-[#D8D2C5]' : 'bg-white/5 text-white/40 border border-white/10'
           }`}
         >
           4 Threat Scenarios
@@ -89,9 +89,9 @@ export default function CrackTimeCards({
           return (
             <div
               key={sc.title}
-              className={`rounded-2xl p-5 transition-all duration-300 flex flex-col justify-between ${
+              className={`rounded-2xl p-5 transition-colors duration-150 flex flex-col justify-between ${
                 isMinimal
-                  ? 'minimalist-card hover:border-[#111111]/40 hover:-translate-y-0.5'
+                  ? 'minimalist-card hover:border-[#2C2924]/40 hover:-translate-y-0.5'
                   : `glass-panel-interactive ${sc.cyberGlow}`
               }`}
             >
@@ -100,7 +100,7 @@ export default function CrackTimeCards({
                   <div
                     className={`p-2 rounded-xl transition-transform group-hover:scale-105 ${
                       isMinimal
-                        ? 'bg-[#F7F6F3] text-[#111111]'
+                        ? 'bg-[#EAE5DB] text-[#2C2924]'
                         : 'bg-white/5 text-white/90 border border-white/10'
                     }`}
                   >
@@ -117,14 +117,14 @@ export default function CrackTimeCards({
                 </div>
 
                 <div className="text-[10px] uppercase font-mono tracking-wider mb-1">
-                  <span className={isMinimal ? 'text-[#787774]' : 'text-white/40'}>
+                  <span className={isMinimal ? 'text-[#767066]' : 'text-white/40'}>
                     {sc.title}
                   </span>
                 </div>
 
                 <div
                   className={`text-lg sm:text-xl font-bold font-mono tracking-tight my-1.5 truncate tabular-nums ${
-                    isMinimal ? 'text-[#111111]' : 'text-white'
+                    isMinimal ? 'text-[#2C2924]' : 'text-white'
                   }`}
                   title={sc.time}
                 >
@@ -132,10 +132,10 @@ export default function CrackTimeCards({
                 </div>
               </div>
 
-              <div className="pt-2 border-t border-dashed border-white/10 mt-2">
+              <div className={`pt-2 border-t border-dashed mt-2 ${isMinimal ? 'border-[#D8D2C5]' : 'border-white/10'}`}>
                 <p
                   className={`text-[11px] font-mono line-clamp-1 ${
-                    isMinimal ? 'text-[#787774]' : 'text-white/45'
+                    isMinimal ? 'text-[#767066]' : 'text-white/45'
                   }`}
                 >
                   {sc.subtitle}

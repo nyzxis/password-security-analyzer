@@ -63,16 +63,16 @@ export default function PasswordGenerator({
   return (
     <div className={isMinimal ? 'doppelrand-shell-minimal' : 'doppelrand-shell'}>
       <div
-        className={`p-6 sm:p-7 transition-all duration-300 space-y-5 ${
+        className={`p-6 sm:p-7 transition-colors duration-150 space-y-5 ${
           isMinimal ? 'doppelrand-core-minimal' : 'doppelrand-core'
         }`}
       >
         {/* Header & Mode Tabs */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
+      <div className={`flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b ${isMinimal ? 'border-[#D8D2C5]' : 'border-white/10'}`}>
         <div>
           <div
             className={`flex items-center gap-2 text-xs font-mono tracking-wider uppercase mb-1 ${
-              isMinimal ? 'text-[#787774]' : 'text-emerald-400'
+              isMinimal ? 'text-[#767066]' : 'text-emerald-400'
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
@@ -80,7 +80,7 @@ export default function PasswordGenerator({
           </div>
           <h3
             className={`text-base sm:text-lg font-bold tracking-tight ${
-              isMinimal ? 'font-serif-editorial text-[#111111]' : 'font-mono text-white'
+              isMinimal ? 'font-serif-editorial text-[#2C2924]' : 'font-mono text-white'
             }`}
           >
             Forge Cryptographically Secure Passwords &amp; Passphrases
@@ -89,18 +89,18 @@ export default function PasswordGenerator({
 
         <div
           className={`flex items-center gap-1 p-1 rounded-xl text-xs font-mono self-start sm:self-auto ${
-            isMinimal ? 'bg-[#F7F6F3] border border-[#EAEAEA]' : 'bg-black/40 border border-white/10'
+            isMinimal ? 'bg-[#EAE5DB] border border-[#D8D2C5]' : 'bg-black/40 border border-white/10'
           }`}
         >
           <button
             onClick={() => setMode('random')}
-            className={`px-3 py-1.5 rounded-lg transition-all active:scale-95 font-medium ${
+            className={`px-3 py-1.5 rounded-lg transition-colors duration-150 active:scale-95 font-medium ${
               mode === 'random'
                 ? isMinimal
-                  ? 'bg-[#111111] text-white'
+                  ? 'bg-[#2C2924] text-[#F4F1EA]'
                   : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                 : isMinimal
-                ? 'text-[#787774] hover:text-[#111111]'
+                ? 'text-[#767066] hover:text-[#2C2924]'
                 : 'text-white/40 hover:text-white'
             }`}
           >
@@ -108,13 +108,13 @@ export default function PasswordGenerator({
           </button>
           <button
             onClick={() => setMode('passphrase')}
-            className={`px-3 py-1.5 rounded-lg transition-all active:scale-95 font-medium ${
+            className={`px-3 py-1.5 rounded-lg transition-colors duration-150 active:scale-95 font-medium ${
               mode === 'passphrase'
                 ? isMinimal
-                  ? 'bg-[#111111] text-white'
+                  ? 'bg-[#2C2924] text-[#F4F1EA]'
                   : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                 : isMinimal
-                ? 'text-[#787774] hover:text-[#111111]'
+                ? 'text-[#767066] hover:text-[#2C2924]'
                 : 'text-white/40 hover:text-white'
             }`}
           >
@@ -125,9 +125,9 @@ export default function PasswordGenerator({
 
       {/* Generated Display Box */}
       <div
-        className={`rounded-xl p-4.5 flex flex-col sm:flex-row items-center justify-between gap-3 border transition-all ${
+        className={`rounded-xl p-4.5 flex flex-col sm:flex-row items-center justify-between gap-3 border transition-colors duration-150 ${
           isMinimal
-            ? 'bg-[#FBFBFA] border-[#EAEAEA]'
+            ? 'bg-[#EAE5DB] border-[#D8D2C5]'
             : 'bg-black/60 border-white/15 shadow-[inset_0_0_24px_rgba(0,0,0,0.6)]'
         }`}
       >
@@ -135,10 +135,10 @@ export default function PasswordGenerator({
           className={`font-mono text-sm sm:text-base break-all tracking-wider tabular-nums ${
             generated
               ? isMinimal
-                ? 'text-[#111111] font-bold'
+                ? 'text-[#2C2924] font-bold'
                 : 'text-emerald-400 font-bold'
               : isMinimal
-              ? 'text-[#787774]'
+              ? 'text-[#767066]'
               : 'text-white/30'
           }`}
         >
@@ -151,13 +151,13 @@ export default function PasswordGenerator({
               <button
                 onClick={handleCopy}
                 title="Copy Generated Password"
-                className={`p-2 rounded-lg text-xs font-mono flex items-center gap-1.5 transition-all active:scale-95 ${
+                className={`p-2 rounded-lg text-xs font-mono flex items-center gap-1.5 transition-colors duration-150 active:scale-95 ${
                   copied
                     ? isMinimal
-                      ? 'bg-[#EDF3EC] text-[#346538]'
+                      ? 'bg-[#DEE7DC] text-[#2A522E]'
                       : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/40'
                     : isMinimal
-                    ? 'border border-[#EAEAEA] bg-white text-[#111111] hover:bg-[#F2F1ED]'
+                    ? 'border border-[#D8D2C5] bg-[#F4F1EA] text-[#2C2924] hover:bg-[#EAE5DB]'
                     : 'border border-white/15 bg-white/5 text-white/70 hover:text-white hover:bg-white/10'
                 }`}
               >
@@ -168,9 +168,9 @@ export default function PasswordGenerator({
               <button
                 onClick={handleApply}
                 title="Load into Analyzer above"
-                className={`p-2 rounded-lg text-xs font-mono flex items-center gap-1.5 transition-all active:scale-95 ${
+                className={`p-2 rounded-lg text-xs font-mono flex items-center gap-1.5 transition-colors duration-150 active:scale-95 ${
                   isMinimal
-                    ? 'bg-[#111111] text-white hover:bg-[#2F3437]'
+                    ? 'bg-[#2C2924] text-[#F4F1EA] hover:bg-[#3D3A34]'
                     : 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-black font-bold hover:brightness-110 shadow-[0_0_15px_rgba(16,185,129,0.3)]'
                 }`}
               >
@@ -183,13 +183,13 @@ export default function PasswordGenerator({
           <button
             onClick={handleGenerate}
             disabled={loading}
-            className={`px-4 py-2 rounded-lg text-xs font-mono flex items-center gap-2 transition-all active:scale-95 ${
+            className={`px-4 py-2 rounded-lg text-xs font-mono flex items-center gap-2 transition-colors duration-150 active:scale-95 ${
               !generated
                 ? isMinimal
-                  ? 'bg-[#111111] text-white hover:bg-[#2F3437]'
+                  ? 'bg-[#2C2924] text-[#F4F1EA] hover:bg-[#3D3A34]'
                   : 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-black font-bold shadow-[0_0_15px_rgba(16,185,129,0.3)]'
                 : isMinimal
-                ? 'border border-[#EAEAEA] bg-white text-[#111111] hover:bg-[#F2F1ED]'
+                ? 'border border-[#D8D2C5] bg-[#F4F1EA] text-[#2C2924] hover:bg-[#EAE5DB]'
                 : 'border border-white/15 bg-white/5 text-white/70 hover:text-white hover:bg-white/10'
             }`}
           >
@@ -205,7 +205,7 @@ export default function PasswordGenerator({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <label
               className={`text-xs font-mono flex items-center justify-between w-full ${
-                isMinimal ? 'text-[#111111]' : 'text-white/80'
+                isMinimal ? 'text-[#2C2924]' : 'text-white/80'
               }`}
             >
               <span>Password Length: {length} characters</span>
@@ -219,7 +219,7 @@ export default function PasswordGenerator({
             max={48}
             value={length}
             onChange={(e) => setLength(Number(e.target.value))}
-            className="w-full accent-emerald-500 cursor-pointer"
+            className={`w-full cursor-pointer ${isMinimal ? 'accent-[#2A522E]' : 'accent-emerald-500'}`}
           />
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 pt-2">
@@ -231,13 +231,13 @@ export default function PasswordGenerator({
             ].map((opt) => (
               <label
                 key={opt.label}
-                className={`flex items-center gap-2 p-2.5 rounded-xl text-xs font-mono cursor-pointer border transition-colors ${
+                className={`flex items-center gap-2 p-2.5 rounded-xl text-xs font-mono cursor-pointer border transition-colors duration-150 ${
                   opt.val
                     ? isMinimal
-                      ? 'bg-[#EDF3EC] text-[#346538] border-[#D4EDDA]'
+                      ? 'bg-[#DEE7DC] text-[#2A522E] border-[#C7D7C4]'
                       : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20'
                     : isMinimal
-                    ? 'bg-[#F7F6F3] text-[#787774] border-[#EAEAEA]'
+                    ? 'bg-[#EAE5DB] text-[#767066] border-[#D8D2C5]'
                     : 'bg-white/5 text-white/40 border-white/5'
                 }`}
               >
@@ -245,7 +245,7 @@ export default function PasswordGenerator({
                   type="checkbox"
                   checked={opt.val}
                   onChange={(e) => opt.set(e.target.checked)}
-                  className="rounded accent-emerald-500"
+                  className={`rounded ${isMinimal ? 'accent-[#2A522E]' : 'accent-emerald-500'}`}
                 />
                 <span className="truncate">{opt.label}</span>
               </label>
@@ -257,7 +257,7 @@ export default function PasswordGenerator({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <label
               className={`text-xs font-mono flex items-center justify-between w-full ${
-                isMinimal ? 'text-[#111111]' : 'text-white/80'
+                isMinimal ? 'text-[#2C2924]' : 'text-white/80'
               }`}
             >
               <span>Word Count: {wordCount} words</span>
@@ -271,12 +271,12 @@ export default function PasswordGenerator({
             max={7}
             value={wordCount}
             onChange={(e) => setWordCount(Number(e.target.value))}
-            className="w-full accent-emerald-500 cursor-pointer"
+            className={`w-full cursor-pointer ${isMinimal ? 'accent-[#2A522E]' : 'accent-emerald-500'}`}
           />
 
           <p
             className={`text-xs font-mono ${
-              isMinimal ? 'text-[#787774]' : 'text-white/40'
+              isMinimal ? 'text-[#767066]' : 'text-white/40'
             }`}
           >
             Generates passphrases from curated English wordlists with numeric suffix (e.g. <code>Cobalt-Falcon-Meadow-Beacon-42</code>).

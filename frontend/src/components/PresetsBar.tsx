@@ -21,7 +21,7 @@ export default function PresetsBar({ onSelectPreset, theme = 'cyber' }: PresetsB
     <div className="flex flex-wrap items-center gap-2 pt-1">
       <span
         className={`text-xs font-mono flex items-center gap-1.5 mr-1 ${
-          isMinimal ? 'text-[#787774]' : 'text-white/40'
+          isMinimal ? 'text-[#767066]' : 'text-white/40'
         }`}
       >
         <Terminal className="w-3.5 h-3.5" />
@@ -32,9 +32,9 @@ export default function PresetsBar({ onSelectPreset, theme = 'cyber' }: PresetsB
         <button
           key={preset.label}
           onClick={() => onSelectPreset(preset.pwd)}
-          className={`px-3 py-1 rounded-lg text-xs font-mono transition-all active:scale-[0.97] flex items-center gap-1.5 ${
+          className={`px-3 py-1 rounded-lg text-xs font-mono transition-colors duration-150 active:scale-[0.97] flex items-center gap-1.5 ${
             isMinimal
-              ? 'bg-[#FBFBFA] border border-[#EAEAEA] text-[#111111] hover:border-[#111111] hover:bg-white'
+              ? 'bg-[#EAE5DB] border border-[#D8D2C5] text-[#2C2924] hover:border-[#2C2924] hover:bg-[#F4F1EA]'
               : 'bg-white/5 border border-white/10 text-white/70 hover:text-white hover:border-emerald-500/40 hover:bg-white/10'
           }`}
         >

@@ -86,26 +86,27 @@ export default function App() {
 
   return (
     <div
-      className={`min-h-[100dvh] flex flex-col antialiased transition-colors duration-300 ${
+      className={`min-h-[100dvh] flex flex-col antialiased transition-colors duration-150 ${
         isMinimal
-          ? 'bg-[#F7F6F3] text-[#111111] selection:bg-[#E1F3FE] selection:text-[#1F6C9F] font-sans-clean'
+          ? 'bg-[#EBE7DF] text-[#2C2924] selection:bg-[#DEE7DC] selection:text-[#2A522E] font-sans-clean'
           : 'bg-[#07090E] text-slate-100 selection:bg-emerald-500/30 selection:text-emerald-200'
       }`}
     >
-      {/* Background Cyber Grid */}
-      {!isMinimal && (
-        <div className="fixed inset-0 cyber-grid-bg opacity-35 pointer-events-none z-0" />
-      )}
+      {/* Background Cyber Grid - persistent GPU layer, zero unmount penalty */}
+      <div
+        className={`fixed inset-0 cyber-grid-bg pointer-events-none z-0 transition-opacity duration-200 ${
+          isMinimal ? 'opacity-0' : 'opacity-35'
+        }`}
+        style={{ willChange: 'opacity' }}
+      />
 
-      {/* Analog Fine Noise Texture Overlay */}
-      {!isMinimal && (
-        <div className="fixed inset-0 noise-overlay opacity-30 pointer-events-none z-0" />
-      )}
-
-      {/* Top Ambient Glow */}
-      {!isMinimal && (
-        <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-gradient-to-b from-emerald-500/10 via-cyan-500/5 to-transparent blur-[140px] pointer-events-none z-0" />
-      )}
+      {/* Top Ambient Glow - pure CSS radial gradient (0ms GPU blur computation) */}
+      <div
+        className={`fixed top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.12)_0%,rgba(6,182,212,0.04)_50%,transparent_70%)] pointer-events-none z-0 transition-opacity duration-200 ${
+          isMinimal ? 'opacity-0' : 'opacity-100'
+        }`}
+        style={{ willChange: 'opacity' }}
+      />
 
       {/* Navigation */}
       <Navbar
@@ -120,14 +121,14 @@ export default function App() {
         {/* Top Hero / Intro Banner */}
         <div
           className={`flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 ${
-            isMinimal ? 'border-b border-[#EAEAEA]' : 'border-b border-white/10'
+            isMinimal ? 'border-b border-[#D8D2C5]' : 'border-b border-white/10'
           }`}
         >
           <div>
             <div
               className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono mb-2.5 ${
                 isMinimal
-                  ? 'border border-[#EAEAEA] bg-white text-[#787774]'
+                  ? 'border border-[#D8D2C5] bg-[#F4F1EA] text-[#767066]'
                   : 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
               }`}
             >
@@ -137,7 +138,7 @@ export default function App() {
 
             <h1
               className={`text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-[-0.03em] ${
-                isMinimal ? 'font-serif-editorial text-[#111111]' : 'font-mono text-white'
+                isMinimal ? 'font-serif-editorial text-[#2C2924]' : 'font-mono text-white'
               }`}
               style={{ textWrap: 'balance' }}
             >
@@ -146,7 +147,7 @@ export default function App() {
 
             <p
               className={`text-xs sm:text-sm mt-1.5 max-w-[65ch] leading-relaxed ${
-                isMinimal ? 'text-[#787774]' : 'text-white/50 font-mono'
+                isMinimal ? 'text-[#767066]' : 'text-white/50 font-mono'
               }`}
               style={{ textWrap: 'pretty' }}
             >
@@ -156,12 +157,12 @@ export default function App() {
 
           <div
             className={`hidden md:flex flex-col items-end text-right text-xs font-mono p-3.5 rounded-xl border ${
-              isMinimal ? 'minimalist-card text-[#787774]' : 'glass-panel text-white/50'
+              isMinimal ? 'minimalist-card text-[#767066]' : 'glass-panel text-white/50'
             }`}
           >
             <div className="flex items-center gap-1.5 font-bold mb-0.5">
-              <Shield className={`w-3.5 h-3.5 ${isMinimal ? 'text-[#111111]' : 'text-emerald-400'}`} />
-              <span className={isMinimal ? 'text-[#111111]' : 'text-white'}>Zero-Knowledge Pipeline</span>
+              <Shield className={`w-3.5 h-3.5 ${isMinimal ? 'text-[#2C2924]' : 'text-emerald-400'}`} />
+              <span className={isMinimal ? 'text-[#2C2924]' : 'text-white'}>Zero-Knowledge Pipeline</span>
             </div>
             <span>Passcode never sent unhashed</span>
           </div>
@@ -218,9 +219,9 @@ export default function App() {
 
       {/* Footer */}
       <footer
-        className={`relative z-10 py-6 text-center font-mono text-xs transition-colors ${
+        className={`relative z-10 py-6 text-center font-mono text-xs transition-colors duration-150 ${
           isMinimal
-            ? 'border-t border-[#EAEAEA] bg-[#FBFBFA] text-[#787774]'
+            ? 'border-t border-[#D8D2C5] bg-[#E2DDD5] text-[#767066]'
             : 'border-t border-white/10 text-white/40'
         }`}
       >
