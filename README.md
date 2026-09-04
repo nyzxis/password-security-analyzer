@@ -1,10 +1,13 @@
 # 🔐 KEYVAULT // Zero-Knowledge Password Security Analyzer
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-pwsec--nyz.vercel.app-00df8f?style=for-the-badge&logo=vercel&logoColor=black)](https://pwsec-nyz.vercel.app/)
+[![GitHub](https://img.shields.io/badge/GitHub-nyzxis%2Fpassword--security--analyzer-10b981?style=for-the-badge&logo=github&logoColor=white)](https://github.com/nyzxis/password-security-analyzer)
 [![FastAPI](https://img.shields.io/badge/Backend-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
 [![React 19](https://img.shields.io/badge/Frontend-React_19-61dafb?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Tailwind CSS](https://img.shields.io/badge/Styling-Tailwind_CSS_v4-38bdf8?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![HaveIBeenPwned](https://img.shields.io/badge/Breach_API-HaveIBeenPwned_k--Anonymity-ff5722?style=for-the-badge)](https://haveibeenpwned.com/API/v3#PwnedPasswords)
-[![Vercel](https://img.shields.io/badge/Deploy-Vercel_Serverless-black?style=for-the-badge&logo=vercel&logoColor=white)](https://vercel.com/)
+
+> **Live Application**: 🌐 **[https://pwsec-nyz.vercel.app/](https://pwsec-nyz.vercel.app/)**
 
 A modern, high-performance cybersecurity application engineered to evaluate password strength, compute Shannon entropy, simulate brute-force crack times across modern hardware clusters, and detect known breach exposures using **Troy Hunt's k-Anonymity mathematical model**.
 
@@ -80,10 +83,12 @@ Open **`http://localhost:3000`** in your browser.
 
 ## ☁️ Deploying to Vercel
 
-KEYVAULT is pre-configured for **Vercel Serverless Full-Stack Deployment**:
+KEYVAULT is optimized for high-speed edge deployment on **Vercel**:
 1. Push this repository to GitHub.
-2. Go to [vercel.com/new](https://vercel.com/new) and import your repository.
-3. Keep default settings (`vercel.json` automatically manages the build and rewrites).
+2. Go to [vercel.com/new](https://vercel.com/new) and import `password-security-analyzer`.
+3. In **Build & Development Settings**:
+   - Set **Root Directory** to `frontend`.
+   - Ensure **Framework Preset** is detected as **Vite**.
 4. Click **Deploy**!
 
 ---
@@ -106,10 +111,10 @@ password-security-analyzer/
 │   │   ├── App.tsx           # Dashboard layout & state management
 │   │   └── styles.css        # Cyber Obsidian & Minimalist design tokens
 │   ├── index.html            # Entry HTML & Google Fonts
-│   └── package.json          # Dependencies
+│   ├── vercel.json           # Client-side SPA routing fallback
+│   └── package.json          # Vite & React dependencies
 ├── api/
-│   └── index.py              # Vercel serverless Python adapter
-├── vercel.json               # Vercel deployment configuration
+│   └── index.py              # Serverless Python entry point
 ├── start.bat                 # One-click Windows runner
 └── README.md
 ```
