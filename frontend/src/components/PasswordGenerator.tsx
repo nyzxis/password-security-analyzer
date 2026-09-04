@@ -61,12 +61,13 @@ export default function PasswordGenerator({
   };
 
   return (
-    <div
-      className={`rounded-2xl p-6 transition-all duration-300 space-y-5 ${
-        isMinimal ? 'minimalist-card' : 'glass-panel'
-      }`}
-    >
-      {/* Header & Mode Tabs */}
+    <div className={isMinimal ? 'doppelrand-shell-minimal' : 'doppelrand-shell'}>
+      <div
+        className={`p-6 sm:p-7 transition-all duration-300 space-y-5 ${
+          isMinimal ? 'doppelrand-core-minimal' : 'doppelrand-core'
+        }`}
+      >
+        {/* Header & Mode Tabs */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-white/10">
         <div>
           <div
@@ -282,6 +283,7 @@ export default function PasswordGenerator({
           </p>
         </div>
       )}
+      </div>
     </div>
   );
 }
