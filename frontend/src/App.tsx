@@ -85,9 +85,18 @@ export default function App() {
     };
   }, []);
 
-  // Sync theme attribute/class on document root for custom scrollbars
+  // Sync theme attribute/class and system color-scheme on document root for custom scrollbars
   useEffect(() => {
     document.documentElement.classList.toggle('theme-minimalist', isMinimal);
+    document.body.classList.toggle('theme-minimalist', isMinimal);
+    document.documentElement.style.colorScheme = isMinimal ? 'light' : 'dark';
+    document.documentElement.style.backgroundColor = isMinimal ? '#EBE7DF' : '#07090E';
+    document.body.style.backgroundColor = isMinimal ? '#EBE7DF' : '#07090E';
+
+    const metaTheme = document.getElementById('meta-theme-color');
+    if (metaTheme) {
+      metaTheme.setAttribute('content', isMinimal ? '#EBE7DF' : '#07090E');
+    }
   }, [isMinimal]);
 
   return (
