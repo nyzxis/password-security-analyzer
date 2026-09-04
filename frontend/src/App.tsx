@@ -8,6 +8,7 @@ import BreachAlert from './components/BreachAlert';
 import VulnerabilityList from './components/VulnerabilityList';
 import PasswordGenerator from './components/PasswordGenerator';
 import PresetsBar from './components/PresetsBar';
+import CustomCursor from './components/CustomCursor';
 import { evaluatePassword, AnalysisResult } from './lib/clientAnalyzer';
 import { checkBreach, checkHealth } from './lib/api';
 import { PwnedCheckResult } from './lib/hibpClient';
@@ -84,14 +85,22 @@ export default function App() {
     };
   }, []);
 
+  // Sync theme attribute/class on document root for custom scrollbars
+  useEffect(() => {
+    document.documentElement.classList.toggle('theme-minimalist', isMinimal);
+  }, [isMinimal]);
+
   return (
     <div
       className={`min-h-[100dvh] flex flex-col antialiased transition-colors duration-150 ${
         isMinimal
-          ? 'bg-[#EBE7DF] text-[#2C2924] selection:bg-[#DEE7DC] selection:text-[#2A522E] font-sans-clean'
+          ? 'bg-[#EBE7DF] text-[#2C2924] selection:bg-[#DEE7DC] selection:text-[#2A522E] font-sans-clean theme-minimalist'
           : 'bg-[#07090E] text-slate-100 selection:bg-emerald-500/30 selection:text-emerald-200'
       }`}
     >
+      {/* Custom Precision Hardware Cursor */}
+      <CustomCursor theme={theme} />
+
       {/* Background Cyber Grid - persistent GPU layer, zero unmount penalty */}
       <div
         className={`fixed inset-0 cyber-grid-bg pointer-events-none z-0 transition-opacity duration-200 ${
