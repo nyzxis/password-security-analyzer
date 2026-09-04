@@ -1,11 +1,17 @@
+import os
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from typing import Optional, List, Dict, Any
 
 from analyzer import analyze_password
 from hibp import check_pwned_password, check_pwned_hash_prefix
 from generator import generate_random_password, generate_passphrase
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+FRONTEND_DIST = os.path.abspath(os.path.join(BASE_DIR, "..", "frontend", "dist"))
 
 app = FastAPI(
     title="Password Security Analyzer API",
@@ -41,7 +47,6 @@ class GenerateRequest(BaseModel):
     separator: str = "-"
     capitalize: bool = True
 
-@app.get("/")
 @app.get("/api")
 @app.get("/api/health")
 @app.get("/health")
@@ -93,6 +98,27 @@ def generate(req: GenerateRequest):
         "password": password,
         "mode": req.mode,
         "analysis": analysis
+    }
+
+# Mount static assets if available
+if os.path.exists(os.path.join(FRONTEND_DIST, "assets")):
+    app.mount("/assets", StaticFiles(directory=os.path.join(FRONTEND_DIST, "assets")), name="assets")
+
+# Fallback route to serve index.html if Vercel routes root request to Python
+@app.get("/")
+@app.get("/{full_path:path}")
+async def catch_all(full_path: str = ""):
+    file_path = os.path.join(FRONTEND_DIST, full_path)
+    if full_path and os.path.isfile(file_path):
+        return FileResponse(file_path)
+    index_file = os.path.join(FRONTEND_DIST, "index.html")
+    if os.path.exists(index_file):
+        return FileResponse(index_file)
+    return {
+        "status": "online",
+        "service": "Password Security Analyzer API",
+        "engine": "FASTAPI + CSPRNG + HIBP",
+        "version": "1.0.0"
     }
 
 if __name__ == "__main__":
