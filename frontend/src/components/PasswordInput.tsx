@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Eye, EyeOff, Copy, Check, X, ShieldCheck, Lock } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Eye, EyeOff, Copy, Check, X, ShieldCheck, Lock, Command } from 'lucide-react';
 
 interface PasswordInputProps {
   value: string;
@@ -24,12 +24,21 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
     onChange('');
   };
 
+  // Keyboard shortcut: Esc to clear
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && value) {
+        handleClear();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [value]);
+
   return (
     <div
       className={`rounded-2xl transition-all duration-300 ${
-        isMinimal
-          ? 'bg-white border border-[#EAEAEA] p-6 shadow-[0_1px_3px_rgba(0,0,0,0.02)]'
-          : 'bg-[#0a0d16]/90 border border-white/10 p-6 backdrop-blur-xl'
+        isMinimal ? 'minimalist-card p-6' : 'glass-panel p-6'
       }`}
     >
       {/* Header Info */}
@@ -44,20 +53,30 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
         </div>
 
         <div className="flex items-center gap-2">
+          {value && (
+            <span
+              className={`hidden sm:inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded ${
+                isMinimal ? 'text-[#787774]' : 'text-white/40'
+              }`}
+            >
+              [ESC to clear]
+            </span>
+          )}
+
           <span
-            className={`text-[11px] font-mono px-2 py-0.5 rounded ${
+            className={`text-[11px] font-mono px-2.5 py-0.5 rounded-lg tabular-nums ${
               isMinimal
                 ? 'bg-[#F7F6F3] text-[#787774] border border-[#EAEAEA]'
-                : 'bg-white/5 text-white/50 border border-white/10'
+                : 'bg-white/5 text-white/60 border border-white/10'
             }`}
           >
             {value.length} CHARS
           </span>
 
           <span
-            className={`hidden sm:inline-flex items-center gap-1 text-[10px] font-mono px-2 py-0.5 rounded ${
+            className={`hidden sm:inline-flex items-center gap-1 text-[10px] font-mono px-2.5 py-0.5 rounded-lg ${
               isMinimal
-                ? 'bg-[#EDF3EC] text-[#346538]'
+                ? 'bg-[#EDF3EC] text-[#346538] border border-[#D4EDDA]'
                 : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
             }`}
           >
@@ -76,20 +95,20 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
           placeholder="Type or paste a password to inspect security..."
           autoComplete="off"
           spellCheck="false"
-          className={`w-full pl-4 pr-28 py-3.5 rounded-xl font-mono text-sm sm:text-base transition-all focus:outline-none ${
+          className={`w-full pl-4 pr-32 py-4 rounded-xl font-mono text-sm sm:text-base transition-all focus:outline-none ${
             isMinimal
-              ? 'bg-[#FBFBFA] border border-[#EAEAEA] text-[#111111] placeholder-[#787774] focus:border-[#111111]'
-              : 'bg-black/50 border border-white/15 text-white placeholder-white/30 focus:border-emerald-400 focus:shadow-[0_0_20px_rgba(16,185,129,0.2)]'
+              ? 'bg-[#FBFBFA] border border-[#EAEAEA] text-[#111111] placeholder-[#787774] focus:border-[#111111] focus:ring-1 focus:ring-[#111111]'
+              : 'bg-black/50 border border-white/15 text-white placeholder-white/30 focus:border-emerald-400 focus:shadow-[0_0_24px_rgba(16,185,129,0.25)]'
           }`}
         />
 
         {/* Action Controls inside Input */}
-        <div className="absolute right-2 top-1/2 -translate-y-1/2 flex items-center gap-1">
+        <div className="absolute right-2.5 top-1/2 -translate-y-1/2 flex items-center gap-1">
           {value && (
             <button
               onClick={handleClear}
-              title="Clear Input"
-              className={`p-1.5 rounded-lg transition-colors ${
+              title="Clear Input (Esc)"
+              className={`p-1.5 rounded-lg transition-all active:scale-95 ${
                 isMinimal
                   ? 'text-[#787774] hover:text-[#111111] hover:bg-[#EAEAEA]'
                   : 'text-white/40 hover:text-white hover:bg-white/10'
@@ -102,7 +121,7 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
           <button
             onClick={() => setShowPassword(!showPassword)}
             title={showPassword ? 'Mask Password' : 'Show Password'}
-            className={`p-1.5 rounded-lg transition-colors ${
+            className={`p-1.5 rounded-lg transition-all active:scale-95 ${
               isMinimal
                 ? 'text-[#787774] hover:text-[#111111] hover:bg-[#EAEAEA]'
                 : 'text-white/40 hover:text-white hover:bg-white/10'
@@ -115,7 +134,7 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
             onClick={handleCopy}
             disabled={!value}
             title={copied ? 'Copied!' : 'Copy to Clipboard'}
-            className={`p-1.5 rounded-lg transition-all ${
+            className={`p-1.5 rounded-lg transition-all active:scale-95 ${
               copied
                 ? isMinimal
                   ? 'bg-[#EDF3EC] text-[#346538]'
@@ -137,7 +156,7 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
         }`}
       >
         <span>🔒 Zero-Knowledge Guarantee:</span>
-        <span>Processed in browser memory. Plaintext password is never sent to any server.</span>
+        <span>Evaluated in local browser memory. Raw password string never traverses any network.</span>
       </p>
     </div>
   );

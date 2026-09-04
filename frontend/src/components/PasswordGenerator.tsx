@@ -63,9 +63,7 @@ export default function PasswordGenerator({
   return (
     <div
       className={`rounded-2xl p-6 transition-all duration-300 space-y-5 ${
-        isMinimal
-          ? 'bg-white border border-[#EAEAEA] shadow-[0_1px_3px_rgba(0,0,0,0.02)]'
-          : 'bg-[#0a0d16]/85 border border-white/10 backdrop-blur-xl'
+        isMinimal ? 'minimalist-card' : 'glass-panel'
       }`}
     >
       {/* Header & Mode Tabs */}
@@ -84,7 +82,7 @@ export default function PasswordGenerator({
               isMinimal ? 'font-serif-editorial text-[#111111]' : 'font-mono text-white'
             }`}
           >
-            Generate High-Entropy Passwords &amp; Passphrases
+            Forge Cryptographically Secure Passwords &amp; Passphrases
           </h3>
         </div>
 
@@ -95,7 +93,7 @@ export default function PasswordGenerator({
         >
           <button
             onClick={() => setMode('random')}
-            className={`px-3 py-1 rounded-lg transition-all ${
+            className={`px-3 py-1.5 rounded-lg transition-all active:scale-95 font-medium ${
               mode === 'random'
                 ? isMinimal
                   ? 'bg-[#111111] text-white'
@@ -109,7 +107,7 @@ export default function PasswordGenerator({
           </button>
           <button
             onClick={() => setMode('passphrase')}
-            className={`px-3 py-1 rounded-lg transition-all ${
+            className={`px-3 py-1.5 rounded-lg transition-all active:scale-95 font-medium ${
               mode === 'passphrase'
                 ? isMinimal
                   ? 'bg-[#111111] text-white'
@@ -119,21 +117,21 @@ export default function PasswordGenerator({
                 : 'text-white/40 hover:text-white'
             }`}
           >
-            Memorable Passphrase
+            Diceware Passphrase
           </button>
         </div>
       </div>
 
       {/* Generated Display Box */}
       <div
-        className={`rounded-xl p-4 flex flex-col sm:flex-row items-center justify-between gap-3 border ${
+        className={`rounded-xl p-4.5 flex flex-col sm:flex-row items-center justify-between gap-3 border transition-all ${
           isMinimal
             ? 'bg-[#FBFBFA] border-[#EAEAEA]'
-            : 'bg-black/60 border-white/15 shadow-[inset_0_0_20px_rgba(0,0,0,0.5)]'
+            : 'bg-black/60 border-white/15 shadow-[inset_0_0_24px_rgba(0,0,0,0.6)]'
         }`}
       >
         <div
-          className={`font-mono text-sm sm:text-base break-all tracking-wider ${
+          className={`font-mono text-sm sm:text-base break-all tracking-wider tabular-nums ${
             generated
               ? isMinimal
                 ? 'text-[#111111] font-bold'
@@ -152,7 +150,7 @@ export default function PasswordGenerator({
               <button
                 onClick={handleCopy}
                 title="Copy Generated Password"
-                className={`p-2 rounded-lg text-xs font-mono flex items-center gap-1.5 transition-all ${
+                className={`p-2 rounded-lg text-xs font-mono flex items-center gap-1.5 transition-all active:scale-95 ${
                   copied
                     ? isMinimal
                       ? 'bg-[#EDF3EC] text-[#346538]'
@@ -169,7 +167,7 @@ export default function PasswordGenerator({
               <button
                 onClick={handleApply}
                 title="Load into Analyzer above"
-                className={`p-2 rounded-lg text-xs font-mono flex items-center gap-1.5 transition-all ${
+                className={`p-2 rounded-lg text-xs font-mono flex items-center gap-1.5 transition-all active:scale-95 ${
                   isMinimal
                     ? 'bg-[#111111] text-white hover:bg-[#2F3437]'
                     : 'bg-gradient-to-r from-emerald-500 to-cyan-500 text-black font-bold hover:brightness-110 shadow-[0_0_15px_rgba(16,185,129,0.3)]'
@@ -184,7 +182,7 @@ export default function PasswordGenerator({
           <button
             onClick={handleGenerate}
             disabled={loading}
-            className={`px-4 py-2 rounded-lg text-xs font-mono flex items-center gap-2 transition-all active:scale-[0.98] ${
+            className={`px-4 py-2 rounded-lg text-xs font-mono flex items-center gap-2 transition-all active:scale-95 ${
               !generated
                 ? isMinimal
                   ? 'bg-[#111111] text-white hover:bg-[#2F3437]'

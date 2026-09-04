@@ -50,16 +50,16 @@ export default function BreachAlert({
   if (breachResult?.isPwned) {
     return (
       <div
-        className={`rounded-2xl p-5 transition-all ${
+        className={`rounded-2xl p-5.5 transition-all ${
           isMinimal
             ? 'bg-[#FDEBEC] border border-[#F8D7DA] text-[#9F2F2D] shadow-sm'
-            : 'bg-rose-500/15 border border-rose-500/40 text-rose-300 cyber-glow-rose'
+            : 'bg-rose-500/15 border border-rose-500/35 text-rose-300 cyber-glow-rose'
         }`}
       >
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-          <div className="flex items-start gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3.5">
             <div
-              className={`p-2 rounded-xl mt-0.5 ${
+              className={`p-2.5 rounded-xl shrink-0 mt-0.5 ${
                 isMinimal ? 'bg-white text-[#9F2F2D]' : 'bg-black/40 text-rose-400 border border-rose-500/40'
               }`}
             >
@@ -77,14 +77,14 @@ export default function BreachAlert({
                   isMinimal ? 'text-[#9F2F2D]' : 'text-rose-200'
                 }`}
               >
-                This exact password was found in{' '}
-                <strong className="font-bold underline">
+                This exact passcode was uncovered in{' '}
+                <strong className="font-bold underline tabular-nums">
                   {breachResult.pwnedCount.toLocaleString()}
                 </strong>{' '}
-                public data breaches cataloged by HaveIBeenPwned.
+                verified breach datasets cataloged by HaveIBeenPwned.
               </p>
               <p className="text-[11px] font-mono opacity-80 mt-0.5">
-                Automated credential-stuffing bots routinely test this combination. Change this password immediately!
+                Automated credential-stuffing botnets actively test this hash. Never use this combination for any online account!
               </p>
             </div>
           </div>
@@ -94,10 +94,10 @@ export default function BreachAlert({
               className={`text-xs font-mono font-bold px-3 py-1.5 rounded-lg border ${
                 isMinimal
                   ? 'bg-white border-[#F8D7DA] text-[#9F2F2D]'
-                  : 'bg-black/50 border-rose-500/40 text-rose-400'
+                  : 'bg-black/60 border-rose-500/40 text-rose-400'
               }`}
             >
-              HIGH RISK
+              CRITICAL EXPOSURE
             </span>
           </div>
         </div>
@@ -110,13 +110,13 @@ export default function BreachAlert({
       className={`rounded-2xl p-5 transition-all ${
         isMinimal
           ? 'bg-[#EDF3EC] border border-[#D4EDDA] text-[#346538] shadow-sm'
-          : 'bg-emerald-500/10 border border-emerald-500/30 text-emerald-300'
+          : 'bg-emerald-500/10 border border-emerald-500/25 text-emerald-300'
       }`}
     >
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <div
-            className={`p-2 rounded-xl ${
+            className={`p-2 rounded-xl shrink-0 ${
               isMinimal ? 'bg-white text-[#346538]' : 'bg-black/40 text-emerald-400 border border-emerald-500/30'
             }`}
           >
@@ -126,11 +126,11 @@ export default function BreachAlert({
           <div>
             <div className="flex items-center gap-2">
               <span className="text-xs font-mono uppercase font-bold tracking-wider">
-                NO KNOWN BREACH EXPOSURES
+                NO KNOWN PUBLIC BREACH EXPOSURES
               </span>
             </div>
             <p className="text-xs font-mono mt-0.5 opacity-90">
-              Not found in 850M+ publicly leaked passwords via k-Anonymity SHA-1 prefix audit.
+              Not found in 850M+ publicly leaked passwords via Troy Hunt's k-Anonymity SHA-1 prefix lookup.
             </p>
           </div>
         </div>
@@ -142,7 +142,7 @@ export default function BreachAlert({
               : 'bg-black/50 border-emerald-500/30 text-emerald-400'
           }`}
         >
-          CLEAN HASH
+          ZERO-PWNED HASH
         </span>
       </div>
     </div>

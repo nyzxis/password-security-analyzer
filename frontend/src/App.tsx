@@ -94,12 +94,17 @@ export default function App() {
     >
       {/* Background Cyber Grid */}
       {!isMinimal && (
-        <div className="fixed inset-0 cyber-grid-bg opacity-30 pointer-events-none z-0" />
+        <div className="fixed inset-0 cyber-grid-bg opacity-35 pointer-events-none z-0" />
+      )}
+
+      {/* Analog Fine Noise Texture Overlay */}
+      {!isMinimal && (
+        <div className="fixed inset-0 noise-overlay opacity-30 pointer-events-none z-0" />
       )}
 
       {/* Top Ambient Glow */}
       {!isMinimal && (
-        <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[750px] h-[300px] bg-gradient-to-b from-emerald-500/10 via-cyan-500/5 to-transparent blur-[140px] pointer-events-none z-0" />
+        <div className="fixed top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-gradient-to-b from-emerald-500/10 via-cyan-500/5 to-transparent blur-[140px] pointer-events-none z-0" />
       )}
 
       {/* Navigation */}
@@ -131,9 +136,10 @@ export default function App() {
             </div>
 
             <h1
-              className={`text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight ${
+              className={`text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-[-0.03em] ${
                 isMinimal ? 'font-serif-editorial text-[#111111]' : 'font-mono text-white'
               }`}
+              style={{ textWrap: 'balance' }}
             >
               Password Security Analyzer
             </h1>
@@ -142,17 +148,18 @@ export default function App() {
               className={`text-xs sm:text-sm mt-1.5 max-w-[65ch] leading-relaxed ${
                 isMinimal ? 'text-[#787774]' : 'text-white/50 font-mono'
               }`}
+              style={{ textWrap: 'pretty' }}
             >
               Real-time entropy modeling, brute-force crack time simulation, and Troy Hunt k-Anonymity breach detection.
             </p>
           </div>
 
           <div
-            className={`hidden md:flex flex-col items-end text-right text-xs font-mono p-3 rounded-xl border ${
-              isMinimal ? 'bg-white border-[#EAEAEA] text-[#787774]' : 'bg-white/5 border-white/10 text-white/50'
+            className={`hidden md:flex flex-col items-end text-right text-xs font-mono p-3.5 rounded-xl border ${
+              isMinimal ? 'minimalist-card text-[#787774]' : 'glass-panel text-white/50'
             }`}
           >
-            <div className="flex items-center gap-1.5 font-bold text-white mb-0.5">
+            <div className="flex items-center gap-1.5 font-bold mb-0.5">
               <Shield className={`w-3.5 h-3.5 ${isMinimal ? 'text-[#111111]' : 'text-emerald-400'}`} />
               <span className={isMinimal ? 'text-[#111111]' : 'text-white'}>Zero-Knowledge Pipeline</span>
             </div>
