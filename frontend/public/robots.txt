@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pwsec-nyz.vercel.app/sitemap.xml

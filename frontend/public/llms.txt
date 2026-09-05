@@ -1,0 +1,25 @@
+# KeyVault - Zero-Knowledge Password Security & Entropy Analyzer
+
+> KeyVault is a high-assurance, client-side zero-knowledge password strength evaluator, offline entropy estimator, and credential vulnerability auditing workbench.
+
+## Core Capabilities
+- **Zero-Knowledge Architecture**: Password analysis, pattern matching, entropy estimation, and dictionary cross-referencing occur 100% locally in-browser or via an offline FastAPI microservice without plaintext transmission.
+- **Multi-Vector Entropy Modeling**: Evaluates character pool dispersion, shannon entropy, repetitive patterns, sequential runs, keyboard walking, and l33t speak substitutions.
+- **Hardware Brute-Force Crack Benchmarks**: Calculates realistic time-to-crack metrics across modern GPU clusters (RTX 4090, 8x A100), cloud distributed rigs, and quantum-adjacent dictionary attacks.
+- **Offline Breach Auditing**: Checks compromised hash prefixes against local k-anonymity bloom filters and HaveIBeenPwned API paradigms without exposing credential hashes.
+- **Cryptographic Password Generator**: Uses Web Crypto API (`window.crypto.getRandomValues`) for cryptographically secure pseudo-random token generation with customizable character pools and passphrases.
+
+## Architecture
+- **Frontend**: React 19, TypeScript, Tailwind CSS v4, Framer Motion, Lucide Icons, Vite.
+- **Backend / Microservice**: FastAPI, zxcvbn-python, Python 3.12.
+- **Deployment**: Production SPA deployed to Vercel at https://pwsec-nyz.vercel.app/
+
+## Part of the 5-Part Cybersecurity & AI Defense Suite by Arfa Danial
+1. **APIShield** (API Security Gateway & WAF): https://apishield-pi.vercel.app/
+2. **MalGuard** (AI Malware Scanner & Sandbox): https://malguard.vercel.app/
+3. **VulnShield** (Vulnerability Intelligence & CVE Scanner): https://vulnshield.vercel.app/
+4. **KeyVault** (Password Security Analyzer & Entropy Engine): https://pwsec-nyz.vercel.app/
+5. **PhishGuard** (Phishing URL & Domain Threat Detector): https://phishingdetector-nyzxis.vercel.app/
+
+Author: Arfa Danial (https://nyzxis.vercel.app/)
+Repository: https://github.com/nyzxis/password-security-analyzer

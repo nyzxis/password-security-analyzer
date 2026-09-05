@@ -17,7 +17,85 @@ export default function Navbar({
   const isMinimal = theme === 'minimalist';
 
   return (
-    <header className="sticky top-4 sm:top-6 z-50 px-4 sm:px-6 w-full max-w-6xl mx-auto transition-colors duration-150">
+    <header className="sticky top-3 sm:top-5 z-50 px-4 sm:px-6 w-full max-w-6xl mx-auto transition-colors duration-150">
+      {/* Island Breadcrumb Header */}
+      <div
+        className={`flex flex-wrap items-center justify-between gap-2 px-3.5 py-1.5 mb-2.5 text-[11px] font-mono rounded-xl transition-colors duration-150 ${
+          isMinimal
+            ? 'bg-[#EAE5DB]/90 border border-[#D8D2C5] text-[#767066]'
+            : 'bg-white/5 border border-white/10 text-white/60 backdrop-blur-md'
+        }`}
+      >
+        <div className="flex items-center gap-1.5 flex-wrap">
+          <a
+            href="https://nyzxis.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`transition-colors flex items-center gap-1 font-medium ${
+              isMinimal ? 'text-[#2C2924] hover:text-[#000]' : 'text-white/80 hover:text-white'
+            }`}
+          >
+            <span>✦ Arfa Danial</span>
+            <span className={isMinimal ? 'text-[#767066]' : 'text-white/40'}>/</span>
+            <span>Portfolio</span>
+          </a>
+          <span className={isMinimal ? 'text-[#A0988A]' : 'text-white/30'}>›</span>
+          <span className={isMinimal ? 'text-[#5C564C]' : 'text-white/50'}>Cybersecurity Suite</span>
+          <span className={isMinimal ? 'text-[#A0988A]' : 'text-white/30'}>›</span>
+          <span
+            className={`font-semibold flex items-center gap-1 ${
+              isMinimal ? 'text-[#2A522E]' : 'text-emerald-400'
+            }`}
+          >
+            <span
+              className={`w-1.5 h-1.5 rounded-full inline-block animate-pulse ${
+                isMinimal ? 'bg-[#2A522E]' : 'bg-emerald-400'
+              }`}
+            ></span>
+            KeyVault
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2 text-[10px]">
+          <span className={isMinimal ? 'text-[#8A8275]' : 'text-white/40'}>Suite:</span>
+          <a
+            href="https://apishield-pi.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${isMinimal ? 'text-[#5C564C] hover:text-[#000]' : 'text-white/60 hover:text-white'} transition-colors`}
+          >
+            APIShield
+          </a>
+          <span className={isMinimal ? 'text-[#C5BFAF]' : 'text-white/20'}>•</span>
+          <a
+            href="https://malguard.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${isMinimal ? 'text-[#5C564C] hover:text-[#000]' : 'text-white/60 hover:text-white'} transition-colors`}
+          >
+            MalGuard
+          </a>
+          <span className={isMinimal ? 'text-[#C5BFAF]' : 'text-white/20'}>•</span>
+          <a
+            href="https://vulnshield.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${isMinimal ? 'text-[#5C564C] hover:text-[#000]' : 'text-white/60 hover:text-white'} transition-colors`}
+          >
+            VulnShield
+          </a>
+          <span className={isMinimal ? 'text-[#C5BFAF]' : 'text-white/20'}>•</span>
+          <a
+            href="https://phishingdetector-nyzxis.vercel.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${isMinimal ? 'text-[#5C564C] hover:text-[#000]' : 'text-white/60 hover:text-white'} transition-colors`}
+          >
+            PhishGuard
+          </a>
+        </div>
+      </div>
+
       <nav
         className={`w-full px-4 sm:px-6 py-3 rounded-full flex items-center justify-between gap-4 transition-colors duration-150 ${
           isMinimal
