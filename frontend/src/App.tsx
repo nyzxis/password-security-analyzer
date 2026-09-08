@@ -186,53 +186,62 @@ export default function App() {
           </div>
         </div>
 
-        {/* Tactile Password Input Field */}
-        <PasswordInput
-          value={password}
-          onChange={handlePasswordChange}
-          theme={theme}
-        />
-
         {/* Quick Test Presets Bar */}
         <PresetsBar
           onSelectPreset={handlePasswordChange}
           theme={theme}
         />
 
-        {/* HaveIBeenPwned Breach Alert Status */}
-        <BreachAlert
-          breachResult={breachResult}
-          loading={checkingBreach}
-          hasInput={Boolean(password)}
-          theme={theme}
-        />
+        {/* Swiss Cryptographic Dual-Deck Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Left Control Deck: Input, CSPRNG Forge & Remediation Directives */}
+          <div className="lg:col-span-6 space-y-6">
+            {/* Tactile Password Input Field */}
+            <PasswordInput
+              value={password}
+              onChange={handlePasswordChange}
+              theme={theme}
+            />
 
-        {/* Real-time Strength Meter & Entropy Breakdown */}
-        <StrengthMeter
-          analysis={analysis}
-          theme={theme}
-        />
+            {/* Smart Cryptographic Password Generator & Hardener */}
+            <PasswordGenerator
+              onApplyPassword={handlePasswordChange}
+              theme={theme}
+            />
 
-        {/* Crack Time Simulation Cards (4 hardware tiers) */}
-        <CrackTimeCards
-          crackTimes={analysis.crack_times}
-          score={analysis.score}
-          theme={theme}
-        />
+            {/* Vulnerabilities & Remediation Directives */}
+            <VulnerabilityList
+              vulnerabilities={analysis.vulnerabilities}
+              suggestions={analysis.suggestions}
+              hasInput={Boolean(password)}
+              theme={theme}
+            />
+          </div>
 
-        {/* Vulnerabilities & Remediation Directives */}
-        <VulnerabilityList
-          vulnerabilities={analysis.vulnerabilities}
-          suggestions={analysis.suggestions}
-          hasInput={Boolean(password)}
-          theme={theme}
-        />
+          {/* Right Telemetry Deck: Breach Alert, Entropy Dial & Crack Times */}
+          <div className="lg:col-span-6 space-y-6">
+            {/* HaveIBeenPwned Breach Alert Status */}
+            <BreachAlert
+              breachResult={breachResult}
+              loading={checkingBreach}
+              hasInput={Boolean(password)}
+              theme={theme}
+            />
 
-        {/* Smart Cryptographic Password Generator & Hardener */}
-        <PasswordGenerator
-          onApplyPassword={handlePasswordChange}
-          theme={theme}
-        />
+            {/* Real-time Strength Meter & Entropy Breakdown */}
+            <StrengthMeter
+              analysis={analysis}
+              theme={theme}
+            />
+
+            {/* Crack Time Simulation Cards (4 hardware tiers) */}
+            <CrackTimeCards
+              crackTimes={analysis.crack_times}
+              score={analysis.score}
+              theme={theme}
+            />
+          </div>
+        </div>
       </main>
 
       {/* Footer */}
