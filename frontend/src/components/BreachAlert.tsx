@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldAlert, ShieldCheck, Database, Loader2, AlertTriangle } from 'lucide-react';
+import { ShieldAlert, ShieldCheck, Database, Loader2, AlertTriangle, KeyRound } from 'lucide-react';
 import { PwnedCheckResult } from '../lib/hibpClient';
 
 interface BreachAlertProps {
@@ -20,14 +20,14 @@ export default function BreachAlert({
   if (!hasInput) {
     return (
       <div
-        className={`rounded-2xl p-5 text-xs font-mono flex items-center gap-3 transition-colors duration-150 ${
+        className={`p-4 sm:p-5 text-xs font-mono flex items-center gap-3 rounded-xl transition-colors duration-150 ${
           isMinimal
             ? 'bg-[#F4F1EA] border border-[#D8D2C5] text-[#767066]'
-            : 'bg-[#0a0d16]/70 border border-white/10 text-white/40'
+            : 'bg-[#0A0D14] border border-[#1E2536] text-white/40'
         }`}
       >
-        <Database className="w-4 h-4 opacity-50 shrink-0" />
-        <span>Type a passcode above to cross-reference with 850M+ breached credentials via HaveIBeenPwned k-Anonymity.</span>
+        <Database className="w-4 h-4 text-emerald-400/60 shrink-0" />
+        <span>Awaiting input to audit against 850M+ breached credentials via HaveIBeenPwned SHA-1 k-Anonymity protocol.</span>
       </div>
     );
   }
@@ -35,14 +35,14 @@ export default function BreachAlert({
   if (loading) {
     return (
       <div
-        className={`rounded-2xl p-5 text-xs font-mono flex items-center gap-3 animate-pulse ${
+        className={`p-4 sm:p-5 text-xs font-mono flex items-center gap-3 rounded-xl animate-pulse ${
           isMinimal
             ? 'bg-[#DFE7EE] border border-[#C5D5E2] text-[#1E4D6E]'
-            : 'bg-cyan-500/10 border border-cyan-500/20 text-cyan-300'
+            : 'bg-[#0E1522] border border-cyan-500/30 text-cyan-300'
         }`}
       >
-        <Loader2 className="w-4 h-4 animate-spin shrink-0" />
-        <span>Computing SHA-1 k-Anonymity hash &amp; auditing global breach database...</span>
+        <Loader2 className="w-4 h-4 animate-spin shrink-0 text-cyan-400" />
+        <span>Hashing SHA-1 prefix [5-char hex] &amp; verifying k-Anonymity against global breach corpus...</span>
       </div>
     );
   }
@@ -50,17 +50,17 @@ export default function BreachAlert({
   if (breachResult?.isPwned) {
     return (
       <div
-        className={`rounded-2xl p-5.5 transition-colors duration-150 ${
+        className={`p-5 sm:p-6 rounded-xl transition-colors duration-150 ${
           isMinimal
             ? 'bg-[#F2DFDE] border border-[#E5C7C5] text-[#822B29] shadow-sm'
-            : 'bg-rose-500/15 border border-rose-500/35 text-rose-300 cyber-glow-rose'
+            : 'bg-[#150A0E] border border-rose-500/40 text-rose-300 shadow-[0_0_28px_rgba(244,63,94,0.15)]'
         }`}
       >
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div className="flex items-start gap-3.5">
             <div
-              className={`p-2.5 rounded-xl shrink-0 mt-0.5 ${
-                isMinimal ? 'bg-[#EAE5DB] text-[#822B29]' : 'bg-black/40 text-rose-400 border border-rose-500/40'
+              className={`p-2.5 rounded-lg shrink-0 mt-0.5 ${
+                isMinimal ? 'bg-[#EAE5DB] text-[#822B29]' : 'bg-rose-500/20 text-rose-400 border border-rose-500/40'
               }`}
             >
               <ShieldAlert className="w-5 h-5" />
@@ -69,7 +69,7 @@ export default function BreachAlert({
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-xs font-mono uppercase font-bold tracking-wider">
-                  GLOBAL DATA BREACH EXPOSURE DETECTED
+                  CRITICAL: PUBLIC DATA BREACH EXPOSURE DETECTED
                 </span>
               </div>
               <p
@@ -81,23 +81,23 @@ export default function BreachAlert({
                 <strong className="font-bold underline tabular-nums">
                   {breachResult.pwnedCount.toLocaleString()}
                 </strong>{' '}
-                verified breach datasets cataloged by HaveIBeenPwned.
+                verified corporate and database breaches recorded by HaveIBeenPwned.
               </p>
               <p className="text-[11px] font-mono opacity-80 mt-0.5">
-                Automated credential-stuffing botnets actively test this hash. Never use this combination for any online account!
+                Automated credential-stuffing dictionaries contain this string. Do not use this under any circumstance.
               </p>
             </div>
           </div>
 
           <div className="self-end sm:self-center shrink-0">
             <span
-              className={`text-xs font-mono font-bold px-3 py-1.5 rounded-lg border ${
+              className={`text-xs font-mono font-bold px-3 py-1.5 rounded border ${
                 isMinimal
                   ? 'bg-[#EAE5DB] border-[#E5C7C5] text-[#822B29]'
-                  : 'bg-black/60 border-rose-500/40 text-rose-400'
+                  : 'bg-rose-500/15 border-rose-500/40 text-rose-400'
               }`}
             >
-              CRITICAL EXPOSURE
+              CRITICAL THREAT
             </span>
           </div>
         </div>
@@ -105,44 +105,36 @@ export default function BreachAlert({
     );
   }
 
+  // Safe / Clean Result
   return (
     <div
-      className={`rounded-2xl p-5 transition-colors duration-150 ${
+      className={`p-4 sm:p-5 rounded-xl transition-colors duration-150 ${
         isMinimal
-          ? 'bg-[#DEE7DC] border border-[#C7D7C4] text-[#2A522E] shadow-sm'
-          : 'bg-emerald-500/10 border border-emerald-500/25 text-emerald-300'
+          ? 'bg-[#DEE7DC] border border-[#C7D7C4] text-[#2A522E]'
+          : 'bg-[#08120E] border border-emerald-500/30 text-emerald-300'
       }`}
     >
       <div className="flex items-center justify-between gap-3">
         <div className="flex items-center gap-3">
-          <div
-            className={`p-2 rounded-xl shrink-0 ${
-              isMinimal ? 'bg-[#EAE5DB] text-[#2A522E]' : 'bg-black/40 text-emerald-400 border border-emerald-500/30'
-            }`}
-          >
-            <ShieldCheck className="w-5 h-5" />
-          </div>
-
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono uppercase font-bold tracking-wider">
-                NO KNOWN PUBLIC BREACH EXPOSURES
-              </span>
-            </div>
-            <p className="text-xs font-mono mt-0.5 opacity-90">
-              Not found in 850M+ publicly leaked passwords via Troy Hunt's k-Anonymity SHA-1 prefix lookup.
-            </p>
+          <ShieldCheck className={`w-5 h-5 shrink-0 ${isMinimal ? 'text-[#2A522E]' : 'text-emerald-400'}`} />
+          <div className="text-xs font-mono">
+            <span className="font-bold uppercase tracking-wider block">
+              ZERO LEAKAGE DETECTED // CLEAN CORPUS
+            </span>
+            <span className="opacity-80">
+              No matching SHA-1 hash occurrences found in 850M+ verified HaveIBeenPwned breach records.
+            </span>
           </div>
         </div>
 
         <span
-          className={`hidden sm:inline-block text-xs font-mono font-bold px-3 py-1.5 rounded-lg border ${
+          className={`text-[10px] font-mono uppercase px-2.5 py-1 rounded border shrink-0 hidden sm:inline-block ${
             isMinimal
-              ? 'bg-[#EAE5DB] border-[#C7D7C4] text-[#2A522E]'
-              : 'bg-black/50 border-emerald-500/30 text-emerald-400'
+              ? 'bg-[#F4F1EA] text-[#2A522E] border-[#C7D7C4]'
+              : 'bg-emerald-500/10 text-emerald-300 border-emerald-500/30'
           }`}
         >
-          ZERO-PWNED HASH
+          K-ANONYMITY VERIFIED
         </span>
       </div>
     </div>

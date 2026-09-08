@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Eye, EyeOff, Copy, Check, X, ShieldCheck, Lock, Command } from 'lucide-react';
+import { Eye, EyeOff, Copy, Check, X, ShieldCheck, Lock, Unlock, KeyRound } from 'lucide-react';
 
 interface PasswordInputProps {
   value: string;
@@ -38,19 +38,23 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
   return (
     <div className={isMinimal ? 'doppelrand-shell-minimal' : 'doppelrand-shell'}>
       <div
-        className={`transition-colors duration-150 ${
-          isMinimal ? 'doppelrand-core-minimal p-6 sm:p-7' : 'doppelrand-core p-6 sm:p-7'
+        className={`transition-colors duration-150 p-6 sm:p-7 ${
+          isMinimal ? 'doppelrand-core-minimal' : 'doppelrand-core'
         }`}
       >
-        {/* Header Info */}
-        <div className="flex items-center justify-between gap-2 mb-3.5">
+        {/* Hardware Enclave Header */}
+        <div className="flex flex-wrap items-center justify-between gap-2 mb-3.5">
           <div
             className={`flex items-center gap-2 text-xs font-mono uppercase tracking-wider ${
               isMinimal ? 'text-[#767066]' : 'text-emerald-400'
             }`}
           >
-            <Lock className="w-3.5 h-3.5" />
-            <span>PASSCODE ENTROPY AUDITOR</span>
+            {showPassword ? (
+              <Unlock className="w-3.5 h-3.5 text-amber-400" />
+            ) : (
+              <Lock className="w-3.5 h-3.5" />
+            )}
+            <span>CRYPTOGRAPHIC SAFE INPUT // MEMORY ENCLAVE</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -60,46 +64,50 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
                   isMinimal ? 'text-[#767066]' : 'text-white/40'
                 }`}
               >
-                [ESC to clear]
+                [ESC TO PURGE]
               </span>
             )}
 
             <span
-              className={`text-[11px] font-mono px-2.5 py-0.5 rounded-lg tabular-nums ${
+              className={`text-[11px] font-mono px-2.5 py-0.5 rounded tabular-nums ${
                 isMinimal
                   ? 'bg-[#EAE5DB] text-[#767066] border border-[#D8D2C5]'
-                  : 'bg-white/5 text-white/60 border border-white/10'
+                  : 'bg-[#0E121B] text-emerald-300 border border-[#1E2536]'
               }`}
             >
               {value.length} CHARS
             </span>
 
             <span
-              className={`hidden sm:inline-flex items-center gap-1 text-[10px] font-mono px-2.5 py-0.5 rounded-lg ${
+              className={`hidden sm:inline-flex items-center gap-1 text-[10px] font-mono px-2.5 py-0.5 rounded ${
                 isMinimal
                   ? 'bg-[#DEE7DC] text-[#2A522E] border border-[#C7D7C4]'
-                  : 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
+                  : 'bg-emerald-500/10 text-emerald-300 border border-emerald-500/20'
               }`}
             >
               <ShieldCheck className="w-3 h-3" />
-              ZERO-KNOWLEDGE
+              FIPS-ZERO-KNOWLEDGE
             </span>
           </div>
         </div>
 
-        {/* Input Field Container */}
+        {/* Machined Recessed Input Slot */}
         <div className="relative">
+          <div className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none text-emerald-400/50">
+            <KeyRound className="w-4 h-4" />
+          </div>
+
           <input
             type={showPassword ? 'text' : 'password'}
             value={value}
             onChange={(e) => onChange(e.target.value)}
-            placeholder="Type or paste a password to inspect security..."
+            placeholder="Type, generate, or paste a passcode to inspect..."
             autoComplete="off"
             spellCheck="false"
-            className={`w-full pl-4.5 pr-32 py-4 rounded-xl font-mono text-sm sm:text-base transition-colors duration-150 focus:outline-none ${
+            className={`w-full pl-10 pr-32 py-4 rounded-lg font-mono text-sm sm:text-base tracking-wide transition-all duration-150 focus:outline-none ${
               isMinimal
                 ? 'bg-[#E6E1D7] border border-[#D1CAC0] text-[#2C2924] placeholder-[#8A8479] focus:border-[#2C2924] focus:ring-1 focus:ring-[#2C2924]'
-                : 'bg-black/50 border border-white/15 text-white placeholder-white/30 focus:border-emerald-400 focus:shadow-[0_0_24px_rgba(16,185,129,0.25)]'
+                : 'bg-[#07090E] border border-[#1E2536] text-white placeholder-white/30 focus:border-emerald-500 focus:shadow-[0_0_24px_rgba(16,185,129,0.2)]'
             }`}
           />
 
@@ -108,8 +116,8 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
             {value && (
               <button
                 onClick={handleClear}
-                title="Clear Input (Esc)"
-                className={`p-1.5 rounded-lg transition-colors duration-150 active:scale-95 ${
+                title="Purge Input (Esc)"
+                className={`p-1.5 rounded transition-colors duration-150 active:scale-95 ${
                   isMinimal
                     ? 'text-[#767066] hover:text-[#2C2924] hover:bg-[#DCD7CD]'
                     : 'text-white/40 hover:text-white hover:bg-white/10'
@@ -121,8 +129,8 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
 
             <button
               onClick={() => setShowPassword(!showPassword)}
-              title={showPassword ? 'Mask Password' : 'Show Password'}
-              className={`p-1.5 rounded-lg transition-colors duration-150 active:scale-95 ${
+              title={showPassword ? 'Mask Passcode' : 'Reveal Passcode'}
+              className={`p-1.5 rounded transition-colors duration-150 active:scale-95 ${
                 isMinimal
                   ? 'text-[#767066] hover:text-[#2C2924] hover:bg-[#DCD7CD]'
                   : 'text-white/40 hover:text-white hover:bg-white/10'
@@ -134,8 +142,8 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
             <button
               onClick={handleCopy}
               disabled={!value}
-              title={copied ? 'Copied!' : 'Copy to Clipboard'}
-              className={`p-1.5 rounded-lg transition-colors duration-150 active:scale-95 ${
+              title={copied ? 'Copied to Clipboard!' : 'Copy Passcode'}
+              className={`p-1.5 rounded transition-colors duration-150 active:scale-95 ${
                 copied
                   ? isMinimal
                     ? 'bg-[#DEE7DC] text-[#2A522E]'
@@ -150,15 +158,20 @@ export default function PasswordInput({ value, onChange, theme = 'cyber' }: Pass
           </div>
         </div>
 
-        {/* Security Privacy Notice */}
-        <p
-          className={`text-[11px] font-mono mt-3 flex items-center gap-1.5 ${
+        {/* Security Hardware Notice */}
+        <div
+          className={`text-[11px] font-mono mt-3.5 flex items-center justify-between flex-wrap gap-2 ${
             isMinimal ? 'text-[#767066]' : 'text-white/40'
           }`}
         >
-          <span>🔒 Zero-Knowledge Guarantee:</span>
-          <span>Evaluated in local browser memory. Raw password string never traverses any network.</span>
-        </p>
+          <div className="flex items-center gap-1.5">
+            <span className={isMinimal ? 'text-[#2A522E]' : 'text-emerald-400'}>●</span>
+            <span>Zero-Knowledge Hardware Guarantee: String evaluated strictly in sandboxed memory.</span>
+          </div>
+          <span className="text-[10px] uppercase tracking-wider text-emerald-400/80 font-semibold">
+            NEVER TRANSMITTED PLAINTEXT
+          </span>
+        </div>
       </div>
     </div>
   );

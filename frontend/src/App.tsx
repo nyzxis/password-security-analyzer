@@ -110,17 +110,17 @@ export default function App() {
       {/* Custom Precision Hardware Cursor */}
       <CustomCursor theme={theme} />
 
-      {/* Background Cyber Grid - persistent GPU layer, zero unmount penalty */}
+      {/* Background Swiss Architectural Vault Grid */}
       <div
-        className={`fixed inset-0 cyber-grid-bg pointer-events-none z-0 transition-opacity duration-200 ${
-          isMinimal ? 'opacity-0' : 'opacity-35'
+        className={`fixed inset-0 vault-grid-bg pointer-events-none z-0 transition-opacity duration-200 ${
+          isMinimal ? 'opacity-0' : 'opacity-40'
         }`}
         style={{ willChange: 'opacity' }}
       />
 
-      {/* Top Ambient Glow - pure CSS radial gradient (0ms GPU blur computation) */}
+      {/* Top Enclave Mint Ambient Glow */}
       <div
-        className={`fixed top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.12)_0%,rgba(6,182,212,0.04)_50%,transparent_70%)] pointer-events-none z-0 transition-opacity duration-200 ${
+        className={`fixed top-0 left-1/2 -translate-x-1/2 w-[850px] h-[350px] bg-[radial-gradient(ellipse_at_top,rgba(16,185,129,0.12)_0%,rgba(6,182,212,0.03)_50%,transparent_70%)] pointer-events-none z-0 transition-opacity duration-200 ${
           isMinimal ? 'opacity-0' : 'opacity-100'
         }`}
         style={{ willChange: 'opacity' }}
@@ -139,12 +139,12 @@ export default function App() {
         {/* Top Hero / Intro Banner */}
         <div
           className={`flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 ${
-            isMinimal ? 'border-b border-[#D8D2C5]' : 'border-b border-white/10'
+            isMinimal ? 'border-b border-[#D8D2C5]' : 'border-b border-[#1E2536]'
           }`}
         >
           <div>
             <div
-              className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono mb-2.5 ${
+              className={`inline-flex items-center gap-2 px-3 py-1 rounded text-xs font-mono mb-2.5 ${
                 isMinimal
                   ? 'border border-[#D8D2C5] bg-[#F4F1EA] text-[#767066]'
                   : 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
@@ -156,33 +156,33 @@ export default function App() {
 
             <h1
               className={`text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-[-0.03em] ${
-                isMinimal ? 'font-serif-editorial text-[#2C2924]' : 'font-mono text-white'
+                isMinimal ? 'font-sans-clean text-[#2C2924]' : 'font-mono text-white'
               }`}
               style={{ textWrap: 'balance' }}
             >
-              Password Security Analyzer
+              KEYVAULT <span className="text-emerald-400 font-normal text-2xl sm:text-3xl">// HARDWARE ENCLAVE</span>
             </h1>
 
             <p
-              className={`text-xs sm:text-sm mt-1.5 max-w-[65ch] leading-relaxed ${
-                isMinimal ? 'text-[#767066]' : 'text-white/50 font-mono'
+              className={`text-xs sm:text-sm mt-1.5 max-w-[70ch] leading-relaxed ${
+                isMinimal ? 'text-[#767066]' : 'text-white/60 font-mono'
               }`}
               style={{ textWrap: 'pretty' }}
             >
-              Real-time entropy modeling, brute-force crack time simulation, and Troy Hunt k-Anonymity breach detection.
+              Zero-knowledge entropy modeling, brute-force hardware exhaustion simulator, and Troy Hunt SHA-1 k-Anonymity breach detection.
             </p>
           </div>
 
           <div
-            className={`hidden md:flex flex-col items-end text-right text-xs font-mono p-3.5 rounded-xl border ${
-              isMinimal ? 'minimalist-card text-[#767066]' : 'glass-panel text-white/50'
+            className={`hidden md:flex flex-col items-end text-right text-xs font-mono p-3.5 rounded-lg border ${
+              isMinimal ? 'minimalist-card text-[#767066]' : 'bg-[#0B0E15] border-[#1E2536] text-white/50'
             }`}
           >
             <div className="flex items-center gap-1.5 font-bold mb-0.5">
               <Shield className={`w-3.5 h-3.5 ${isMinimal ? 'text-[#2C2924]' : 'text-emerald-400'}`} />
-              <span className={isMinimal ? 'text-[#2C2924]' : 'text-white'}>Zero-Knowledge Pipeline</span>
+              <span className={isMinimal ? 'text-[#2C2924]' : 'text-white'}>Zero-Knowledge Enclave</span>
             </div>
-            <span>Passcode never sent unhashed</span>
+            <span>Plaintext never sent across wire</span>
           </div>
         </div>
 
@@ -240,11 +240,11 @@ export default function App() {
         className={`relative z-10 py-6 text-center font-mono text-xs transition-colors duration-150 ${
           isMinimal
             ? 'border-t border-[#D8D2C5] bg-[#E2DDD5] text-[#767066]'
-            : 'border-t border-white/10 text-white/40'
+            : 'border-t border-[#1E2536] bg-[#07090E] text-white/40'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <span>Password Security Analyzer • Built by Arfa Danial</span>
+          <span>KeyVault • Cryptographic Password Enclave • Built by Arfa Danial</span>
           <span>Stack: Python • FastAPI • React 19 • Tailwind CSS • HaveIBeenPwned API</span>
         </div>
       </footer>
